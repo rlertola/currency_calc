@@ -5,7 +5,7 @@ class Quote {
   final countryName;
   final currencyName;
   final imageUrl;
-  final quotePrice;
+  var quotePrice;
 
   Quote({
     this.countrySymbol,

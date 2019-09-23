@@ -1,6 +1,8 @@
+import 'package:bread_currency/models/currency_data.dart';
 import 'package:bread_currency/screens/favorites_screen.dart';
 import 'package:bread_currency/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -17,7 +19,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {
         'page': HomeScreen(),
-        'title': 'Bread Currency Converter',
+        'title': 'Currency Converter',
       },
       {
         'page': FavoritesScreen(),
@@ -27,6 +29,9 @@ class _TabsScreenState extends State<TabsScreen> {
   }
 
   _selectPage(int index) {
+    if (index == 1) {
+      Provider.of<CurrencyData>(context).updateFavorites();
+    }
     setState(() {
       _selectedPageIndex = index;
     });

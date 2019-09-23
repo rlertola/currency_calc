@@ -50,10 +50,9 @@ class CurrencyData extends ChangeNotifier {
     base = baseSymbol;
     _quotes = [];
     _menuItems = [];
+
     String latestQuotesUrl = '$currencyDataUrl$base';
-
     http.Response response = await http.get(latestQuotesUrl);
-
     var decoded = jsonDecode(response.body);
 
     double valueToRound;
@@ -86,6 +85,24 @@ class CurrencyData extends ChangeNotifier {
 
     notifyListeners();
     print(quoteCount);
+  }
+
+  Future<void> updateFavorites() {
+    String singleQuoteUrl;
+    http.Response response;
+    var decoded;
+    double valueToRound;
+    _favorites.forEach((fav) async {
+      singleQuoteUrl =
+          '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
+      response = await http.get(singleQuoteUrl);
+      decoded = jsonDecode(response.body);
+      valueToRound = decoded['rates'][fav.countrySymbol];
+      valueToRound = valueToRound * fav.baseAmount;
+      fav.quotePrice = valueToRound.toStringAsFixed(2);
+    });
+    notifyListeners();
+    print('building favs');
   }
 
   void setBaseAmount(double newAmount, String baseSymbol) {

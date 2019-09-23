@@ -15,9 +15,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     print('building');
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text('Bread Currency Converter'),
-      // ),
       body: Column(
         children: <Widget>[
           HeaderContainer(),
