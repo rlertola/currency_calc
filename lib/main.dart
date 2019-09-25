@@ -3,8 +3,6 @@ import 'package:bread_currency/screens/tabs_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:bread_currency/screens/home_screen.dart';
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {

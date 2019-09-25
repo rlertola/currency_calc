@@ -13,7 +13,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('building');
+    print('building all');
     return Scaffold(
       body: Column(
         children: <Widget>[

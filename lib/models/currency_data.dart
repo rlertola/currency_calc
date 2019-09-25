@@ -87,22 +87,31 @@ class CurrencyData extends ChangeNotifier {
     print(quoteCount);
   }
 
-  Future<void> updateFavorites() {
-    String singleQuoteUrl;
-    http.Response response;
-    var decoded;
-    double valueToRound;
-    _favorites.forEach((fav) async {
-      singleQuoteUrl =
+  Future<void> updateFavorites() async {
+    if (favCount == 0) {
+      return;
+    }
+
+    for (Quote fav in _favorites) {
+      String singleQuoteUrl =
           '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
-      response = await http.get(singleQuoteUrl);
-      decoded = jsonDecode(response.body);
-      valueToRound = decoded['rates'][fav.countrySymbol];
+      http.Response response = await http.get(singleQuoteUrl);
+      var decoded = jsonDecode(response.body);
+      double valueToRound = decoded['rates'][fav.countrySymbol];
       valueToRound = valueToRound * fav.baseAmount;
       fav.quotePrice = valueToRound.toStringAsFixed(2);
-    });
+    }
+    // await Future.forEach(_favorites, (fav) async {
+    //   String singleQuoteUrl =
+    //       '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
+    //   http.Response response = await http.get(singleQuoteUrl);
+    //   var decoded = jsonDecode(response.body);
+    //   double valueToRound = decoded['rates'][fav.countrySymbol];
+    //   valueToRound = valueToRound * fav.baseAmount;
+    //   fav.quotePrice = valueToRound.toStringAsFixed(2);
+    // });
+    print('called in currencydata');
     notifyListeners();
-    print('building favs');
   }
 
   void setBaseAmount(double newAmount, String baseSymbol) {
@@ -112,7 +121,7 @@ class CurrencyData extends ChangeNotifier {
 
   void addToFavorites(int index) {
     _favorites.add(_quotes[index]);
-    print(_favorites[0].countryName);
+    print(_favorites[index].countryName);
   }
 
   void setCountryInfo(String symbol) {

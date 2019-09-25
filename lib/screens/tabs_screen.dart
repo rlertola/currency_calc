@@ -29,12 +29,14 @@ class _TabsScreenState extends State<TabsScreen> {
   }
 
   _selectPage(int index) {
-    if (index == 1) {
-      Provider.of<CurrencyData>(context).updateFavorites();
-    }
+    // if (index == 1) {
+    //   Provider.of<CurrencyData>(context).updateFavorites();
+    // }
+
     setState(() {
       _selectedPageIndex = index;
     });
+    print('setstate');
   }
 
   @override
@@ -57,7 +59,7 @@ class _TabsScreenState extends State<TabsScreen> {
             title: Text('All'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
+            icon: Icon(Icons.star),
             title: Text('Favorites'),
           ),
         ],

@@ -28,6 +28,7 @@ class CountryDetailScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         child: Icon(Icons.star_border),
+        onPressed: () {},
       ),
       body: Column(
         children: <Widget>[

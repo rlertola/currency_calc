@@ -32,12 +32,12 @@ class CurrencyCard extends StatelessWidget {
       // color: Colors.white30,
       child: GestureDetector(
         onLongPress: () {
-          Provider.of<CurrencyData>(context).addToFavorites(index);
           Scaffold.of(context).hideCurrentSnackBar();
           Scaffold.of(context).showSnackBar(SnackBar(
             content: Text('Added item to favorites'),
             duration: Duration(seconds: 2),
           ));
+          Provider.of<CurrencyData>(context).addToFavorites(index);
         },
         child: Card(
           elevation: 2,
