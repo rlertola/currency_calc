@@ -5,13 +5,13 @@ import 'package:provider/provider.dart';
 
 class FavoritesScreen extends StatelessWidget {
   Future<void> _refreshFavorites(BuildContext context) async {
-    print('called');
+    print('refresh favs called in favsscreen');
     await Provider.of<CurrencyData>(context, listen: false).updateFavorites();
   }
 
   @override
   Widget build(BuildContext context) {
-    print('building favs');
+    print('building favs list');
     return Scaffold(
       body: FutureBuilder(
         future: _refreshFavorites(context),
@@ -32,8 +32,14 @@ class FavoritesScreen extends StatelessWidget {
                     builder: (context, currencyData, child) {
                   return (currencyData.favCount == 0)
                       ? Center(
-                          child: Text(
-                              'Longpress on a card to add it to your favorites!'),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 12),
+                            child: Text(
+                              'You have no favorites. Long-press on a card in the All screen to add it to your favorites. Do the same here to remove it!',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 16),
+                            ),
+                          ),
                         )
                       : ListView.builder(
                           itemCount: currencyData.favCount,
@@ -47,6 +53,7 @@ class FavoritesScreen extends StatelessWidget {
                               currencyName: fav.currencyName,
                               image: fav.imageUrl,
                               value: fav.quotePrice,
+                              index: i,
                             );
                           }),
                         );

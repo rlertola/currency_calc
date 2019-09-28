@@ -1,7 +1,7 @@
 class Quote {
   final countrySymbol;
   final baseSymbol;
-  final baseAmount;
+  var baseAmount;
   final countryName;
   final currencyName;
   final imageUrl;

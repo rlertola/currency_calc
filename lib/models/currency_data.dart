@@ -16,6 +16,7 @@ class CurrencyData extends ChangeNotifier {
   String currency;
   String base = 'USD';
   double baseAmount = 1;
+  int pageIndex = 0;
 
   UnmodifiableListView<Quote> get quotes {
     _quotes.sort((a, b) {
@@ -73,7 +74,7 @@ class CurrencyData extends ChangeNotifier {
         Quote(
           countrySymbol: key,
           baseSymbol: base,
-          baseAmount: baseAmount,
+          baseAmount: baseAmount.toStringAsFixed(2),
           countryName: country,
           currencyName: currency,
           quotePrice: valueToRound.toStringAsFixed(2),
@@ -92,15 +93,19 @@ class CurrencyData extends ChangeNotifier {
       return;
     }
 
+    // Either one of these will work. Not exactly sure why regular forEach doesn't and if one is better than the other.
     for (Quote fav in _favorites) {
+      double baseAmtToRound = double.parse(fav.baseAmount);
       String singleQuoteUrl =
           '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
       http.Response response = await http.get(singleQuoteUrl);
       var decoded = jsonDecode(response.body);
       double valueToRound = decoded['rates'][fav.countrySymbol];
-      valueToRound = valueToRound * fav.baseAmount;
+      valueToRound = valueToRound * baseAmtToRound;
+      fav.baseAmount = baseAmtToRound.toStringAsFixed(2);
       fav.quotePrice = valueToRound.toStringAsFixed(2);
     }
+
     // await Future.forEach(_favorites, (fav) async {
     //   String singleQuoteUrl =
     //       '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
@@ -110,7 +115,7 @@ class CurrencyData extends ChangeNotifier {
     //   valueToRound = valueToRound * fav.baseAmount;
     //   fav.quotePrice = valueToRound.toStringAsFixed(2);
     // });
-    print('called in currencydata');
+    print('updateFavorites called');
     notifyListeners();
   }
 
@@ -119,9 +124,19 @@ class CurrencyData extends ChangeNotifier {
     getCurrencyData(baseSymbol: baseSymbol);
   }
 
-  void addToFavorites(int index) {
-    _favorites.add(_quotes[index]);
-    print(_favorites[index].countryName);
+  void toggleFavorite(int quoteIndex) {
+    if (pageIndex == 0) {
+      _favorites.add(_quotes[quoteIndex]);
+      print(quoteIndex);
+    } else {
+      _favorites.removeAt(quoteIndex);
+      print(quoteIndex);
+    }
+    notifyListeners();
+  }
+
+  void setPageIndex(int index) {
+    pageIndex = index;
   }
 
   void setCountryInfo(String symbol) {

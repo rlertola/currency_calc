@@ -29,15 +29,19 @@ class CurrencyCard extends StatelessWidget {
       width: double.infinity,
       height: 200,
       margin: EdgeInsets.all(5),
-      // color: Colors.white30,
       child: GestureDetector(
         onLongPress: () {
+          CurrencyData currencyData = Provider.of<CurrencyData>(context);
+          currencyData.toggleFavorite(index);
           Scaffold.of(context).hideCurrentSnackBar();
-          Scaffold.of(context).showSnackBar(SnackBar(
-            content: Text('Added item to favorites'),
-            duration: Duration(seconds: 2),
-          ));
-          Provider.of<CurrencyData>(context).addToFavorites(index);
+          Scaffold.of(context).showSnackBar(
+            SnackBar(
+              content: currencyData.pageIndex == 0
+                  ? Text('Item added to favorites')
+                  : Text('Item removed from favorites'),
+              duration: Duration(seconds: 2),
+            ),
+          );
         },
         child: Card(
           elevation: 2,
