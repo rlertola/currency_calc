@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 
+import 'package:bread_currency/models/db_provider.dart';
 import 'package:bread_currency/models/menu_item.dart';
 import 'package:bread_currency/models/quote.dart';
 import 'package:flutter/widgets.dart';
@@ -17,6 +18,7 @@ class CurrencyData extends ChangeNotifier {
   String base = 'USD';
   double baseAmount = 1;
   int pageIndex = 0;
+  DbProvider db = DbProvider();
 
   UnmodifiableListView<Quote> get quotes {
     _quotes.sort((a, b) {
@@ -89,9 +91,12 @@ class CurrencyData extends ChangeNotifier {
   }
 
   Future<void> updateFavorites() async {
+    _favorites = await db.fetchItems();
     if (favCount == 0) {
       return;
     }
+
+    print(_favorites);
 
     // Either one of these will work. Not exactly sure why regular forEach doesn't and if one is better than the other.
     for (Quote fav in _favorites) {
@@ -99,11 +104,12 @@ class CurrencyData extends ChangeNotifier {
       String singleQuoteUrl =
           '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
       http.Response response = await http.get(singleQuoteUrl);
-      var decoded = jsonDecode(response.body);
+      final decoded = jsonDecode(response.body);
       double valueToRound = decoded['rates'][fav.countrySymbol];
       valueToRound = valueToRound * baseAmtToRound;
       fav.baseAmount = baseAmtToRound.toStringAsFixed(2);
       fav.quotePrice = valueToRound.toStringAsFixed(2);
+      print('fav: $fav');
     }
 
     // await Future.forEach(_favorites, (fav) async {
@@ -124,13 +130,30 @@ class CurrencyData extends ChangeNotifier {
     getCurrencyData(baseSymbol: baseSymbol);
   }
 
+  // void setFavorites(List<Map<String, dynamic>> maps) {
+  //   for (Map<String, dynamic> map in maps) {
+  //     _favorites.add(
+  //       Quote(
+  //         countrySymbol: map['countrySymbol'],
+  //         baseSymbol: map['baseSymbol'],
+  //         baseAmount: map['baseAmount'],
+  //         countryName: map['countryName'],
+  //         imageUrl: map['imageUrl'],
+  //         quotePrice: map['quotePrice'],
+  //       ),
+  //     );
+  //   }
+  // }
+
   void toggleFavorite(int quoteIndex) {
     if (pageIndex == 0) {
-      _favorites.add(_quotes[quoteIndex]);
-      print(quoteIndex);
+      // _favorites.add(_quotes[quoteIndex]);
+      db.insertItem(_quotes[quoteIndex]);
+      // add to database
     } else {
-      _favorites.removeAt(quoteIndex);
-      print(quoteIndex);
+      // _favorites.removeAt(quoteIndex);
+      db.deleteItem(quoteIndex);
+      // remove from database
     }
     notifyListeners();
   }

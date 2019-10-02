@@ -22,6 +22,7 @@ class FavoritesScreen extends StatelessWidget {
             );
           } else {
             if (snapshot.error != null) {
+              print(snapshot.error);
               return Center(
                 child: Text('There was an error retrieving data'),
               );

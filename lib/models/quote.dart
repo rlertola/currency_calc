@@ -16,4 +16,19 @@ class Quote {
     this.imageUrl,
     this.quotePrice,
   });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      "countryName": countryName,
+      "currencyName": currencyName,
+      "baseSymbol": baseSymbol,
+      "baseAmount": baseAmount,
+      "countrySymbol": countrySymbol,
+      "imageUrl": imageUrl,
+    };
+  }
+
+  // Quote.fromMap(Map<String, dynamic> map) {
+
+  // }
 }
