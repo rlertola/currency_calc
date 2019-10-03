@@ -1,8 +1,4 @@
-import 'dart:convert';
-
-import 'package:bread_currency/models/currency_data.dart';
 import 'package:bread_currency/models/quote.dart';
-import 'package:provider/provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'dart:io';
@@ -37,13 +33,15 @@ class DbProvider {
 
   Future<List<Quote>> fetchItems() async {
     final List<Map<String, dynamic>> maps = await db.query('Favorites');
-    print(maps[0]);
+    print(maps);
+
     List<Quote> quotes = List.generate(maps.length, (i) {
       return Quote(
         countrySymbol: maps[i]['countrySymbol'],
         baseSymbol: maps[i]['baseSymbol'],
-        baseAmount: maps[i]['baseAmount'],
+        baseAmount: maps[i]['baseAmount'].toString(),
         countryName: maps[i]['countryName'],
+        currencyName: maps[i]['currencyName'],
         imageUrl: maps[i]['imageUrl'],
         // quotePrice: maps[i]['quotePrice'],
       );

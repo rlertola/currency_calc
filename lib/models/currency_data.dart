@@ -95,9 +95,7 @@ class CurrencyData extends ChangeNotifier {
     if (favCount == 0) {
       return;
     }
-
-    print(_favorites);
-
+    print(favorites[0].countryName);
     // Either one of these will work. Not exactly sure why regular forEach doesn't and if one is better than the other.
     for (Quote fav in _favorites) {
       double baseAmtToRound = double.parse(fav.baseAmount);
@@ -109,7 +107,6 @@ class CurrencyData extends ChangeNotifier {
       valueToRound = valueToRound * baseAmtToRound;
       fav.baseAmount = baseAmtToRound.toStringAsFixed(2);
       fav.quotePrice = valueToRound.toStringAsFixed(2);
-      print('fav: $fav');
     }
 
     // await Future.forEach(_favorites, (fav) async {
@@ -121,6 +118,7 @@ class CurrencyData extends ChangeNotifier {
     //   valueToRound = valueToRound * fav.baseAmount;
     //   fav.quotePrice = valueToRound.toStringAsFixed(2);
     // });
+    print(favCount);
     print('updateFavorites called');
     notifyListeners();
   }
@@ -149,11 +147,10 @@ class CurrencyData extends ChangeNotifier {
     if (pageIndex == 0) {
       // _favorites.add(_quotes[quoteIndex]);
       db.insertItem(_quotes[quoteIndex]);
-      // add to database
     } else {
-      // _favorites.removeAt(quoteIndex);
+      print('toggle deleted $quoteIndex');
+      _favorites.removeAt(quoteIndex);
       db.deleteItem(quoteIndex);
-      // remove from database
     }
     notifyListeners();
   }
