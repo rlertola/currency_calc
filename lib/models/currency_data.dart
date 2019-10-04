@@ -95,7 +95,7 @@ class CurrencyData extends ChangeNotifier {
     if (favCount == 0) {
       return;
     }
-    print(favorites[0].countryName);
+    print('id: ${favorites[0].id}');
     // Either one of these will work. Not exactly sure why regular forEach doesn't and if one is better than the other.
     for (Quote fav in _favorites) {
       double baseAmtToRound = double.parse(fav.baseAmount);
@@ -148,9 +148,8 @@ class CurrencyData extends ChangeNotifier {
       // _favorites.add(_quotes[quoteIndex]);
       db.insertItem(_quotes[quoteIndex]);
     } else {
-      print('toggle deleted $quoteIndex');
+      db.deleteItem(_favorites[quoteIndex].id);
       _favorites.removeAt(quoteIndex);
-      db.deleteItem(quoteIndex);
     }
     notifyListeners();
   }

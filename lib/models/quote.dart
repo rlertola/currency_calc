@@ -1,4 +1,5 @@
 class Quote {
+  final id;
   final countrySymbol;
   final baseSymbol;
   var baseAmount;
@@ -8,6 +9,7 @@ class Quote {
   var quotePrice;
 
   Quote({
+    this.id,
     this.countrySymbol,
     this.baseSymbol,
     this.baseAmount,
@@ -19,6 +21,7 @@ class Quote {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
+      "id": id,
       "countryName": countryName,
       "currencyName": currencyName,
       "baseSymbol": baseSymbol,
@@ -27,8 +30,4 @@ class Quote {
       "imageUrl": imageUrl,
     };
   }
-
-  // Quote.fromMap(Map<String, dynamic> map) {
-
-  // }
 }

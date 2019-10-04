@@ -37,6 +37,7 @@ class DbProvider {
 
     List<Quote> quotes = List.generate(maps.length, (i) {
       return Quote(
+        id: maps[i]['id'],
         countrySymbol: maps[i]['countrySymbol'],
         baseSymbol: maps[i]['baseSymbol'],
         baseAmount: maps[i]['baseAmount'].toString(),
