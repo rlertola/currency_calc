@@ -6,6 +6,8 @@ import 'package:bread_currency/models/menu_item.dart';
 import 'package:bread_currency/models/quote.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/number_symbols.dart';
+import 'package:intl/number_symbols_data.dart';
 
 const String currencyDataUrl = 'https://api.exchangeratesapi.io/latest?base=';
 
@@ -19,6 +21,14 @@ class CurrencyData extends ChangeNotifier {
   double baseAmount = 1;
   int pageIndex = 0;
   DbProvider db = DbProvider();
+
+  List get symbols {
+    return numberFormatSymbols.keys
+        .where((key) => key.toString().contains('_'))
+        .map((key) => key.toString().split('_'))
+        .map((split) => Locale(split[0], split[1]))
+        .toList();
+  }
 
   UnmodifiableListView<Quote> get quotes {
     _quotes.sort((a, b) {
@@ -50,6 +60,7 @@ class CurrencyData extends ChangeNotifier {
   }
 
   Future<void> getCurrencyData({baseSymbol = 'USD'}) async {
+    print(symbols);
     base = baseSymbol;
     _quotes = [];
     _menuItems = [];
@@ -85,9 +96,7 @@ class CurrencyData extends ChangeNotifier {
         ),
       );
     });
-
     notifyListeners();
-    print(quoteCount);
   }
 
   Future<void> updateFavorites() async {
@@ -95,7 +104,7 @@ class CurrencyData extends ChangeNotifier {
     if (favCount == 0) {
       return;
     }
-    print('id: ${favorites[0].id}');
+
     // Either one of these will work. Not exactly sure why regular forEach doesn't and if one is better than the other.
     for (Quote fav in _favorites) {
       double baseAmtToRound = double.parse(fav.baseAmount);
@@ -118,8 +127,7 @@ class CurrencyData extends ChangeNotifier {
     //   valueToRound = valueToRound * fav.baseAmount;
     //   fav.quotePrice = valueToRound.toStringAsFixed(2);
     // });
-    print(favCount);
-    print('updateFavorites called');
+
     notifyListeners();
   }
 
@@ -127,21 +135,6 @@ class CurrencyData extends ChangeNotifier {
     baseAmount = newAmount;
     getCurrencyData(baseSymbol: baseSymbol);
   }
-
-  // void setFavorites(List<Map<String, dynamic>> maps) {
-  //   for (Map<String, dynamic> map in maps) {
-  //     _favorites.add(
-  //       Quote(
-  //         countrySymbol: map['countrySymbol'],
-  //         baseSymbol: map['baseSymbol'],
-  //         baseAmount: map['baseAmount'],
-  //         countryName: map['countryName'],
-  //         imageUrl: map['imageUrl'],
-  //         quotePrice: map['quotePrice'],
-  //       ),
-  //     );
-  //   }
-  // }
 
   void toggleFavorite(int quoteIndex) {
     if (pageIndex == 0) {
