@@ -6,7 +6,6 @@ import 'package:bread_currency/models/menu_item.dart';
 import 'package:bread_currency/models/quote.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/number_symbols.dart';
 import 'package:intl/number_symbols_data.dart';
 
 const String currencyDataUrl = 'https://api.exchangeratesapi.io/latest?base=';
@@ -22,13 +21,13 @@ class CurrencyData extends ChangeNotifier {
   int pageIndex = 0;
   DbProvider db = DbProvider();
 
-  List get symbols {
-    return numberFormatSymbols.keys
-        .where((key) => key.toString().contains('_'))
-        .map((key) => key.toString().split('_'))
-        .map((split) => Locale(split[0], split[1]))
-        .toList();
-  }
+  // List get symbols {
+  //   return numberFormatSymbols.keys
+  //       // .where((key) => key.toString().contains('_'))
+  //       // .map((key) => key.toString().split('_'))
+  //       // .map((split) => Locale(split[0], split[1]))
+  //       .toList();
+  // }
 
   UnmodifiableListView<Quote> get quotes {
     _quotes.sort((a, b) {
@@ -60,7 +59,6 @@ class CurrencyData extends ChangeNotifier {
   }
 
   Future<void> getCurrencyData({baseSymbol = 'USD'}) async {
-    print(symbols);
     base = baseSymbol;
     _quotes = [];
     _menuItems = [];

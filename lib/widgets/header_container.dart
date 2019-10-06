@@ -35,7 +35,18 @@ class HeaderContainer extends StatelessWidget {
                       keyboardType: TextInputType.number,
                       textAlign: TextAlign.right,
                       decoration: InputDecoration(
-                        // prefix: currencyData.symbols[0],
+                        // prefixIcon: Icon(Icons.label),
+                        // prefixIcon: Icon(Icons.label_outline),
+                        // prefixIcon: Icon(Icons.arrow_right),
+                        // prefixIcon: Icon(Icons.chevron_right),
+
+                        prefixIcon: Image.network(
+                          'https://doesmoneymotivate.files.wordpress.com/2015/09/currency-sign-universal.png?w=100',
+                          scale: 4,
+                        ),
+
+                        // prefixIcon: Icon(Icons.arrow_forward_ios),
+
                         contentPadding: EdgeInsets.all(4),
                         hintText: currencyData.baseAmount.toStringAsFixed(0),
                         hintStyle: TextStyle(
