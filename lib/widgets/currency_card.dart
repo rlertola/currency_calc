@@ -26,9 +26,8 @@ class CurrencyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
       height: 200,
-      margin: EdgeInsets.all(5),
+      margin: EdgeInsets.only(bottom: 6),
       child: GestureDetector(
         onLongPress: () {
           CurrencyData currencyData = Provider.of<CurrencyData>(context);
@@ -44,7 +43,14 @@ class CurrencyCard extends StatelessWidget {
           );
         },
         child: Card(
-          elevation: 2,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(
+              color: Colors.grey.shade400,
+              width: 1,
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          elevation: 1,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

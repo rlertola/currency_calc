@@ -33,7 +33,6 @@ class DbProvider {
 
   Future<List<Quote>> fetchItems() async {
     final List<Map<String, dynamic>> maps = await db.query('Favorites');
-    print(maps);
 
     List<Quote> quotes = List.generate(maps.length, (i) {
       return Quote(
@@ -51,12 +50,10 @@ class DbProvider {
   }
 
   Future<void> insertItem(Quote quote) async {
-    print('added ${quote.countrySymbol} to db');
     await db.insert('Favorites', quote.toMap());
   }
 
   Future<void> deleteItem(int id) async {
-    print('deleted $id from db');
     await db.delete(
       'Favorites',
       where: "id = ?",
