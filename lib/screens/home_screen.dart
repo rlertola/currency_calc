@@ -1,3 +1,4 @@
+import 'package:bread_currency/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'package:bread_currency/widgets/currency_card.dart';
@@ -37,8 +38,8 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(
                     // top: 8,
-                    right: 8,
-                    left: 8,
+                    right: 12,
+                    left: 12,
                   ),
                   child: FutureBuilder(
                     future: _refreshCurrency(context),
@@ -50,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                       } else {
                         if (snapshot.error != null) {
                           return Center(
-                            child: Text('There was an error retrieving data.'),
+                            child: Text(kErrorMessage),
                           );
                         } else {
                           return RefreshIndicator(

@@ -1,3 +1,4 @@
+import 'package:bread_currency/constants.dart';
 import 'package:bread_currency/models/currency_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +28,7 @@ class CurrencyCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      margin: EdgeInsets.only(bottom: 6),
+      margin: const EdgeInsets.only(bottom: 2),
       child: GestureDetector(
         onLongPress: () {
           CurrencyData currencyData = Provider.of<CurrencyData>(context);
@@ -36,9 +37,9 @@ class CurrencyCard extends StatelessWidget {
           Scaffold.of(context).showSnackBar(
             SnackBar(
               content: currencyData.pageIndex == 0
-                  ? Text('Item added to favorites')
-                  : Text('Item removed from favorites'),
-              duration: Duration(seconds: 2),
+                  ? const Text(kItemAddedToFavorites)
+                  : const Text(kItemRemovedFromFavorites),
+              duration: const Duration(seconds: 2),
             ),
           );
         },
@@ -56,24 +57,24 @@ class CurrencyCard extends StatelessWidget {
             children: <Widget>[
               Text(
                 countryName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 40,
                 ),
               ),
               Text(
                 currencyName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Image.network(
                 image,
                 scale: 12,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
@@ -81,11 +82,11 @@ class CurrencyCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     '$baseAmount $baseSymbol',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                     ),
                   ),
-                  Text(
+                  const Text(
                     ' = ',
                     style: TextStyle(
                       fontSize: 20,
@@ -93,7 +94,7 @@ class CurrencyCard extends StatelessWidget {
                   ),
                   Text(
                     '$value $countryCode',
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 30,
                     ),
                   ),

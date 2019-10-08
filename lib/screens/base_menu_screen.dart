@@ -7,7 +7,10 @@ class BaseMenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose Base Currency'),
+        title: const Text(
+          'Choose Base Currency',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: ListView.builder(
         itemCount: Provider.of<CurrencyData>(context).quoteCount,

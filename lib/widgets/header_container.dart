@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:bread_currency/models/currency_data.dart';
 import 'package:provider/provider.dart';
 
+const double inputAndButtonHeight = 74;
+
 class HeaderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -10,10 +12,10 @@ class HeaderContainer extends StatelessWidget {
       builder: (context, currencyData, child) {
         return Container(
           padding: EdgeInsets.only(
-            top: 60,
-            left: 20,
-            right: 20,
-            bottom: 40,
+            top: 30,
+            left: 16,
+            right: 16,
+            bottom: 18,
           ),
           // height: 100,
           decoration: BoxDecoration(
@@ -24,13 +26,13 @@ class HeaderContainer extends StatelessWidget {
             // ),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               Text(
                 'Currency Calculator',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 24,
+                  fontSize: 20,
                 ),
               ),
               SizedBox(
@@ -41,10 +43,10 @@ class HeaderContainer extends StatelessWidget {
                   Expanded(
                     child: Container(
                       padding: EdgeInsets.symmetric(
-                        horizontal: 25,
-                        vertical: 25,
+                        horizontal: 14,
+                        // vertical: 25,
                       ),
-                      // height: 100,
+                      height: inputAndButtonHeight,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
@@ -55,12 +57,13 @@ class HeaderContainer extends StatelessWidget {
                       ),
                       child: Center(
                         child: TextField(
-                          cursorWidth: 4,
+                          // cursorColor: Colors.black54,
+                          cursorWidth: 2,
                           style: TextStyle(
                             fontSize: 36,
                             color: Colors.black54,
                           ),
-                          cursorColor: Colors.white,
+
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
@@ -71,26 +74,27 @@ class HeaderContainer extends StatelessWidget {
                             //   scale: 4,
                             // ),
                             // prefixIcon: Icon(Icons.arrow_forward_ios),
-                            contentPadding: EdgeInsets.all(4),
+                            contentPadding: EdgeInsets.all(2),
+
                             hintText:
-                                currencyData.baseAmount.toStringAsFixed(0),
+                                currencyData.baseAmount.toStringAsFixed(2),
                             hintStyle: TextStyle(
-                              fontSize: 36,
-                              color: Colors.black38,
+                              fontSize: 30,
+                              color: Colors.black26,
                             ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.black54,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Colors.black38,
-                                width: 2.0,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
+                            // focusedBorder: UnderlineInputBorder(
+                            //   borderSide: BorderSide(
+                            //     color: Colors.black54,
+                            //     style: BorderStyle.solid,
+                            //   ),
+                            // ),
+                            // enabledBorder: UnderlineInputBorder(
+                            //   borderSide: BorderSide(
+                            //     color: Colors.black38,
+                            //     width: 2.0,
+                            //     style: BorderStyle.solid,
+                            //   ),
+                            // ),
                           ),
                           onChanged: (newAmount) {
                             if (newAmount.isEmpty) {
@@ -105,32 +109,31 @@ class HeaderContainer extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      height: 100,
-                      decoration: BoxDecoration(
-                          // border: Border.all(color: Colors.black87),
-                          ),
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(10),
-                            bottomRight: Radius.circular(10),
-                          ),
+                  Container(
+                    width: 130,
+                    height: inputAndButtonHeight,
+                    decoration: BoxDecoration(
+                        // border: Border.all(color: Colors.black87),
                         ),
-                        color: Colors.white54,
-                        onPressed: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (context) => BaseMenuScreen(),
-                          );
-                        },
-                        child: Text(
-                          currencyData.base,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 36,
-                          ),
+                    child: FlatButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
+                      ),
+                      color: Colors.white54,
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => BaseMenuScreen(),
+                        );
+                      },
+                      child: Text(
+                        currencyData.base,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
                         ),
                       ),
                     ),
