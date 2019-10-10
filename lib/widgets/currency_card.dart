@@ -107,3 +107,85 @@ class CurrencyCard extends StatelessWidget {
     );
   }
 }
+
+// GestureDetector(
+//         onLongPress: () {
+//           CurrencyData currencyData = Provider.of<CurrencyData>(context);
+//           currencyData.toggleFavorite(index);
+//           Scaffold.of(context).hideCurrentSnackBar();
+//           Scaffold.of(context).showSnackBar(
+//             SnackBar(
+//               content: currencyData.pageIndex == 0
+//                   ? const Text(kItemAddedToFavorites)
+//                   : const Text(kItemRemovedFromFavorites),
+//               duration: const Duration(seconds: 2),
+//             ),
+//           );
+//         },
+//         child: Card(
+//           color: Colors.lightBlue,
+//           shape: RoundedRectangleBorder(
+//             side: BorderSide(
+//               color: Colors.white,
+//               width: 1,
+//             ),
+//             borderRadius: BorderRadius.circular(20),
+//           ),
+//           elevation: 4,
+//           child: Column(
+//             mainAxisAlignment: MainAxisAlignment.center,
+//             children: <Widget>[
+//               Text(
+//                 countryName,
+//                 style: const TextStyle(
+//                   fontSize: 40,
+//                   color: Colors.white,
+//                 ),
+//               ),
+//               Text(
+//                 currencyName,
+//                 style: const TextStyle(
+//                   fontSize: 15,
+//                   color: Colors.white,
+//                 ),
+//               ),
+//               const SizedBox(
+//                 height: 10,
+//               ),
+//               Image.network(
+//                 image,
+//                 scale: 12,
+//               ),
+//               const SizedBox(
+//                 height: 5,
+//               ),
+//               Row(
+//                 mainAxisAlignment: MainAxisAlignment.center,
+//                 children: <Widget>[
+//                   Text(
+//                     '$baseAmount $baseSymbol',
+//                     style: const TextStyle(
+//                       fontSize: 16,
+//                       color: Colors.white,
+//                     ),
+//                   ),
+//                   const Text(
+//                     ' = ',
+//                     style: TextStyle(
+//                       fontSize: 20,
+//                       color: Colors.white,
+//                     ),
+//                   ),
+//                   Text(
+//                     '$value $countryCode',
+//                     style: const TextStyle(
+//                       fontSize: 30,
+//                       color: Colors.white,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),

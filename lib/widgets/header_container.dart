@@ -26,7 +26,7 @@ class HeaderContainer extends StatelessWidget {
             // ),
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
                 'Currency Calculator',
@@ -48,6 +48,7 @@ class HeaderContainer extends StatelessWidget {
                       ),
                       height: inputAndButtonHeight,
                       decoration: BoxDecoration(
+                        // border: Border.all(color: Colors.black54),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
@@ -117,12 +118,13 @@ class HeaderContainer extends StatelessWidget {
                         ),
                     child: FlatButton(
                       shape: RoundedRectangleBorder(
+                        // side: BorderSide(),
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10),
                           bottomRight: Radius.circular(10),
                         ),
                       ),
-                      color: Colors.white54,
+                      color: Colors.lightBlue.shade200,
                       onPressed: () {
                         showModalBottomSheet(
                           context: context,
