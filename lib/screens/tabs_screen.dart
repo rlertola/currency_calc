@@ -38,12 +38,13 @@ class _TabsScreenState extends State<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.lightBlue.shade100,
+      // backgroundColor: Colors.lightBlueAccent,
       body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,
-        backgroundColor: Colors.lightBlue,
+        backgroundColor: Colors.lightBlueAccent.shade100,
+        // backgroundColor: Colors.lightBlue,
         selectedItemColor: Colors.white,
         items: [
           BottomNavigationBarItem(

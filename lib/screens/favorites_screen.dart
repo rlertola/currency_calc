@@ -13,11 +13,12 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.lightBlueAccent,
       appBar: AppBar(
         title: const Text('Favorites'),
       ),
       body: Padding(
-        padding: const EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.all(12),
         child: FutureBuilder(
           future: _refreshFavorites(context),
           builder: (context, snapshot) {

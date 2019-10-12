@@ -16,7 +16,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.lightBlue,
+        // color: Colors.lightBlue,
+        color: Colors.lightBlueAccent,
         // decoration: BoxDecoration(
         //   borderRadius: BorderRadius.only(
         //     topLeft: Radius.circular(20),
@@ -29,7 +30,9 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  // color: Colors.white,
+                  // color: Colors.lightBlue,
+                  color: Colors.lightBlueAccent,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),

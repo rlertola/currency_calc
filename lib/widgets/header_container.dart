@@ -1,4 +1,4 @@
-import 'package:bread_currency/screens/base_menu_screen.dart';
+import 'package:bread_currency/screens/bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:bread_currency/models/currency_data.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +19,8 @@ class HeaderContainer extends StatelessWidget {
           ),
           // height: 100,
           decoration: BoxDecoration(
-            color: Colors.lightBlue,
+            // color: Colors.lightBlue,
+            color: Colors.lightBlueAccent,
             // borderRadius: BorderRadius.only(
             //   bottomLeft: Radius.circular(20),
             //   bottomRight: Radius.circular(20),
@@ -53,8 +54,10 @@ class HeaderContainer extends StatelessWidget {
                           topLeft: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
                         ),
+
                         // border: Border.all(color: Colors.grey),
-                        color: Colors.white70,
+                        color: Colors.white,
+                        // color: Colors.white70,
                       ),
                       child: Center(
                         child: TextField(
@@ -118,13 +121,18 @@ class HeaderContainer extends StatelessWidget {
                         ),
                     child: FlatButton(
                       shape: RoundedRectangleBorder(
-                        // side: BorderSide(),
+                        // side: BorderSide(
+                        //   color: Colors.black54,
+                        //   width: 1,
+                        // ),
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(10),
                           bottomRight: Radius.circular(10),
                         ),
                       ),
-                      color: Colors.lightBlue.shade200,
+                      // color: Colors.lightBlue.shade200,
+                      // color: Colors.white,
+                      color: Colors.lightBlueAccent.shade100,
                       onPressed: () {
                         showModalBottomSheet(
                           context: context,
@@ -135,6 +143,7 @@ class HeaderContainer extends StatelessWidget {
                         currencyData.base,
                         style: TextStyle(
                           color: Colors.white,
+                          // color: Colors.black54,
                           fontSize: 30,
                         ),
                       ),

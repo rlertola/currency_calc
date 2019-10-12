@@ -44,26 +44,31 @@ class CurrencyCard extends StatelessWidget {
           );
         },
         child: Card(
+          // color: Colors.lightBlue,
+          color: Colors.lightBlueAccent,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: Colors.grey.shade400,
+              // color: Colors.grey.shade400,
+              color: Colors.white,
               width: 1,
             ),
             borderRadius: BorderRadius.circular(20),
           ),
-          elevation: 1,
+          elevation: 4,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text(
                 countryName,
                 style: const TextStyle(
+                  color: Colors.white,
                   fontSize: 40,
                 ),
               ),
               Text(
                 currencyName,
                 style: const TextStyle(
+                  color: Colors.white,
                   fontSize: 15,
                 ),
               ),
@@ -83,18 +88,21 @@ class CurrencyCard extends StatelessWidget {
                   Text(
                     '$baseAmount $baseSymbol',
                     style: const TextStyle(
+                      color: Colors.white,
                       fontSize: 16,
                     ),
                   ),
                   const Text(
                     ' = ',
                     style: TextStyle(
+                      color: Colors.white,
                       fontSize: 20,
                     ),
                   ),
                   Text(
                     '$value $countryCode',
                     style: const TextStyle(
+                      color: Colors.white,
                       fontSize: 30,
                     ),
                   ),
