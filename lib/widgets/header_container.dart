@@ -19,12 +19,7 @@ class HeaderContainer extends StatelessWidget {
           ),
           // height: 100,
           decoration: BoxDecoration(
-            // color: Colors.lightBlue,
-            color: Colors.lightBlueAccent,
-            // borderRadius: BorderRadius.only(
-            //   bottomLeft: Radius.circular(20),
-            //   bottomRight: Radius.circular(20),
-            // ),
+            color: Theme.of(context).primaryColor,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,30 +56,24 @@ class HeaderContainer extends StatelessWidget {
                       ),
                       child: Center(
                         child: TextField(
-                          // cursorColor: Colors.black54,
+                          cursorColor: Theme.of(context).primaryColor,
                           cursorWidth: 2,
                           style: TextStyle(
                             fontSize: 36,
                             color: Colors.black54,
                           ),
-
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
-                            // prefixIcon: Icon(Icons.arrow_right),
                             prefixIcon: Icon(Icons.chevron_right),
-                            // prefixIcon: Image.network(
-                            //   'https://doesmoneymotivate.files.wordpress.com/2015/09/currency-sign-universal.png?w=100',
-                            //   scale: 4,
-                            // ),
-                            // prefixIcon: Icon(Icons.arrow_forward_ios),
+
                             contentPadding: EdgeInsets.all(2),
 
                             hintText:
                                 currencyData.baseAmount.toStringAsFixed(2),
                             hintStyle: TextStyle(
                               fontSize: 30,
-                              color: Colors.black26,
+                              color: Theme.of(context).hintColor,
                             ),
                             // focusedBorder: UnderlineInputBorder(
                             //   borderSide: BorderSide(
@@ -119,7 +108,8 @@ class HeaderContainer extends StatelessWidget {
                     decoration: BoxDecoration(
                         // border: Border.all(color: Colors.black87),
                         ),
-                    child: FlatButton(
+                    child: RaisedButton(
+                      elevation: 2,
                       shape: RoundedRectangleBorder(
                         // side: BorderSide(
                         //   color: Colors.black54,
@@ -130,9 +120,6 @@ class HeaderContainer extends StatelessWidget {
                           bottomRight: Radius.circular(10),
                         ),
                       ),
-                      // color: Colors.lightBlue.shade200,
-                      // color: Colors.white,
-                      color: Colors.lightBlueAccent.shade100,
                       onPressed: () {
                         showModalBottomSheet(
                           context: context,

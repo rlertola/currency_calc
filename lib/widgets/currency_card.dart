@@ -45,7 +45,7 @@ class CurrencyCard extends StatelessWidget {
         },
         child: Card(
           // color: Colors.lightBlue,
-          color: Colors.lightBlueAccent,
+          color: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
               // color: Colors.grey.shade400,

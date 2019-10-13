@@ -13,18 +13,36 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: const Text('Favorites'),
+        elevation: 0,
+        title: const Text(
+          'Favorites',
+          style: TextStyle(color: Colors.white),
+        ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12),
+      body: Container(
+        padding: const EdgeInsets.only(
+          top: 12,
+          left: 12,
+          right: 12,
+        ),
+        // color: Theme.of(context).accentColor,
+        decoration: BoxDecoration(
+          color: Theme.of(context).accentColor,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
         child: FutureBuilder(
           future: _refreshFavorites(context),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  backgroundColor: Colors.white,
+                ),
               );
             } else {
               if (snapshot.error != null) {

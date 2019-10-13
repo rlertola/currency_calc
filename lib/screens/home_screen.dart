@@ -16,31 +16,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        // color: Colors.lightBlue,
-        color: Colors.lightBlueAccent,
-        // decoration: BoxDecoration(
-        //   borderRadius: BorderRadius.only(
-        //     topLeft: Radius.circular(20),
-        //     topRight: Radius.circular(20),
-        //   ),
-        // ),
+        color: Theme.of(context).primaryColor,
         child: Column(
           children: <Widget>[
             HeaderContainer(),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  // color: Colors.white,
-                  // color: Colors.lightBlue,
-                  color: Colors.lightBlueAccent,
+                  color: Theme.of(context).accentColor,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   ),
                 ),
                 child: Container(
-                  margin: EdgeInsets.only(
-                    // top: 8,
+                  margin: const EdgeInsets.only(
                     right: 12,
                     left: 12,
                   ),
@@ -49,7 +39,9 @@ class HomeScreen extends StatelessWidget {
                     builder: (context, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Center(
-                          child: CircularProgressIndicator(),
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.white,
+                          ),
                         );
                       } else {
                         if (snapshot.error != null) {
