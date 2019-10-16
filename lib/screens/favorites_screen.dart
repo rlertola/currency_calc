@@ -41,7 +41,7 @@ class FavoritesScreen extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).primaryColor,
                 ),
               );
             } else {

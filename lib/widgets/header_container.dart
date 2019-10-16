@@ -6,17 +6,13 @@ import 'package:provider/provider.dart';
 const double inputAndButtonHeight = 74;
 
 class HeaderContainer extends StatelessWidget {
+  String hintText = 1.toStringAsFixed(2);
   @override
   Widget build(BuildContext context) {
     return Consumer<CurrencyData>(
       builder: (context, currencyData, child) {
         return Container(
-          padding: EdgeInsets.only(
-            top: 30,
-            left: 16,
-            right: 16,
-            bottom: 18,
-          ),
+          padding: EdgeInsets.all(16),
           // height: 100,
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
@@ -66,30 +62,19 @@ class HeaderContainer extends StatelessWidget {
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.chevron_right),
-
                             contentPadding: EdgeInsets.all(2),
-
                             hintText:
                                 currencyData.baseAmount.toStringAsFixed(2),
                             hintStyle: TextStyle(
                               fontSize: 30,
                               color: Theme.of(context).hintColor,
                             ),
-                            // focusedBorder: UnderlineInputBorder(
-                            //   borderSide: BorderSide(
-                            //     color: Colors.black54,
-                            //     style: BorderStyle.solid,
-                            //   ),
-                            // ),
-                            // enabledBorder: UnderlineInputBorder(
-                            //   borderSide: BorderSide(
-                            //     color: Colors.black38,
-                            //     width: 2.0,
-                            //     style: BorderStyle.solid,
-                            //   ),
-                            // ),
                           ),
-                          onChanged: (newAmount) {
+                          // onChanged: (newAmount) {
+
+                          //   hintText = newAmount.toString();
+                          // },
+                          onSubmitted: (newAmount) {
                             if (newAmount.isEmpty) {
                               currencyData.baseAmount = 1;
                             } else {

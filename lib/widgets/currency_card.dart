@@ -75,10 +75,14 @@ class CurrencyCard extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Image.network(
+              Image.asset(
                 image,
-                scale: 12,
+                scale: 2.5,
               ),
+              // Image.network(
+              //   image,
+              //   scale: 12,
+              // ),
               const SizedBox(
                 height: 5,
               ),

@@ -70,16 +70,8 @@ class CurrencyData extends ChangeNotifier {
     double valueToRound;
 
     decoded['rates'].forEach((key, value) {
-      valueToRound = value * baseAmount;
-
       setCountryInfo(key);
-
-      _menuItems.add(
-        MenuItem(
-          currencySymbol: key,
-          countryName: country,
-        ),
-      );
+      valueToRound = value * baseAmount;
 
       _quotes.add(
         Quote(
@@ -89,8 +81,14 @@ class CurrencyData extends ChangeNotifier {
           countryName: country,
           currencyName: currency,
           quotePrice: valueToRound.toStringAsFixed(2),
-          imageUrl:
-              'https://www.motosha.com/wp-content/uploads/mexican-flag-1024x569.jpg',
+          imageUrl: './assets/brl.png',
+        ),
+      );
+
+      _menuItems.add(
+        MenuItem(
+          currencySymbol: key,
+          countryName: country,
         ),
       );
     });
@@ -149,7 +147,7 @@ class CurrencyData extends ChangeNotifier {
     pageIndex = index;
   }
 
-  void setCountryInfo(String symbol) {
+  void setCountryInfo(String symbol) async {
     switch (symbol) {
       case 'CAD':
         country = 'Canada';
