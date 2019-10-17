@@ -35,23 +35,34 @@ class BaseMenuScreen extends StatelessWidget {
               itemBuilder: (context, i) {
                 final menuItem =
                     Provider.of<CurrencyData>(context).menuItems[i];
-                return ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Theme.of(context).primaryColor,
-                    child: Text(
-                      menuItem.currencySymbol,
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 6),
+                  child: ListTile(
+                    leading: Image.asset(
+                      Provider.of<CurrencyData>(context).quotes[i].imageUrl,
+                      scale: 2.5,
                     ),
+                    // CircleAvatar(
+                    //   backgroundColor: Theme.of(context).primaryColor,
+                    //   child: Text(
+                    //     menuItem.currencySymbol,
+                    //     style: TextStyle(
+                    //       color: Colors.white,
+                    //     ),
+                    //   ),
+                    // ),
+                    title: Text(
+                      menuItem.countryName,
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    trailing: Text(menuItem.currencySymbol),
+                    onTap: () {
+                      Provider.of<CurrencyData>(context).getCurrencyData(
+                        baseSymbol: menuItem.currencySymbol,
+                      );
+                      Navigator.of(context).pop();
+                    },
                   ),
-                  title: Text(menuItem.countryName),
-                  onTap: () {
-                    Provider.of<CurrencyData>(context).getCurrencyData(
-                      baseSymbol: menuItem.currencySymbol,
-                    );
-                    Navigator.of(context).pop();
-                  },
                 );
               },
             ),

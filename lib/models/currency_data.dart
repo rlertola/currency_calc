@@ -16,6 +16,7 @@ class CurrencyData extends ChangeNotifier {
   List<Quote> _favorites = [];
   String country;
   String currency;
+  String flag;
   String base = 'USD';
   double baseAmount = 1;
   int pageIndex = 0;
@@ -81,7 +82,7 @@ class CurrencyData extends ChangeNotifier {
           countryName: country,
           currencyName: currency,
           quotePrice: valueToRound.toStringAsFixed(2),
-          imageUrl: './assets/brl.png',
+          imageUrl: flag,
         ),
       );
 
@@ -148,6 +149,7 @@ class CurrencyData extends ChangeNotifier {
   }
 
   void setCountryInfo(String symbol) async {
+    flag = './assets/$symbol.png';
     switch (symbol) {
       case 'CAD':
         country = 'Canada';
@@ -162,8 +164,8 @@ class CurrencyData extends ChangeNotifier {
         currency = 'Icelandic krona';
         break;
       case 'PHP':
-        country = 'Phillippines';
-        currency = 'Phillippine peso';
+        country = 'Philippines';
+        currency = 'Philippine peso';
         break;
       case 'DKK':
         country = 'Denmark';
