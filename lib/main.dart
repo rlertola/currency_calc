@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
           bottomAppBarColor: Colors.grey.shade300,
           buttonColor: Colors.blue.shade200,
           dividerColor: Theme.of(context).primaryColor,
+          fontFamily: 'Comfortaa',
         ),
 
         // home: HomeScreen(),

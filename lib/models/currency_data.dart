@@ -149,7 +149,7 @@ class CurrencyData extends ChangeNotifier {
   }
 
   void setCountryInfo(String symbol) async {
-    flag = './assets/$symbol.png';
+    flag = './assets/flags/$symbol.png';
     switch (symbol) {
       case 'CAD':
         country = 'Canada';

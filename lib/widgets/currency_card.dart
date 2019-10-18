@@ -61,6 +61,7 @@ class CurrencyCard extends StatelessWidget {
               Text(
                 countryName,
                 style: const TextStyle(
+                  // fontFamily: 'Raleway',
                   color: Colors.white,
                   fontSize: 40,
                 ),
@@ -68,6 +69,7 @@ class CurrencyCard extends StatelessWidget {
               Text(
                 currencyName,
                 style: const TextStyle(
+                  // fontFamily: 'Raleway',
                   color: Colors.white,
                   fontSize: 15,
                 ),
@@ -92,6 +94,7 @@ class CurrencyCard extends StatelessWidget {
                   Text(
                     '$baseAmount $baseSymbol',
                     style: const TextStyle(
+                      // fontFamily: 'Source Sans Pro',
                       color: Colors.white,
                       fontSize: 16,
                     ),
@@ -106,6 +109,7 @@ class CurrencyCard extends StatelessWidget {
                   Text(
                     '$value $countryCode',
                     style: const TextStyle(
+                      // fontFamily: 'Source Sans Pro',
                       color: Colors.white,
                       fontSize: 30,
                     ),
