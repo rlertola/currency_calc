@@ -94,7 +94,7 @@ class CurrencyCard extends StatelessWidget {
                   Text(
                     '$baseAmount $baseSymbol',
                     style: const TextStyle(
-                      // fontFamily: 'Source Sans Pro',
+                      fontFamily: 'Comfortaa',
                       color: Colors.white,
                       fontSize: 16,
                     ),
@@ -102,6 +102,7 @@ class CurrencyCard extends StatelessWidget {
                   const Text(
                     ' = ',
                     style: TextStyle(
+                      fontFamily: 'Comfortaa',
                       color: Colors.white,
                       fontSize: 20,
                     ),
@@ -109,7 +110,7 @@ class CurrencyCard extends StatelessWidget {
                   Text(
                     '$value $countryCode',
                     style: const TextStyle(
-                      // fontFamily: 'Source Sans Pro',
+                      fontFamily: 'Comfortaa',
                       color: Colors.white,
                       fontSize: 30,
                     ),

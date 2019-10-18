@@ -50,21 +50,12 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Montserrat
-      fonts:
-        - asset: assets/fonts/Montserrat-Regular.ttf
     - family: Questrial
       fonts:
         - asset: assets/fonts/Questrial-Regular.ttf
-    - family: K2D
-      fonts:
-        - asset: assets/fonts/K2D-Regular.ttf
     - family: Comfortaa
       fonts:
         - asset: assets/fonts/Comfortaa-Regular.ttf
-    - family: Marcellus
-      fonts:
-        - asset: assets/fonts/MarcellusSC-Regular.ttf
     - family: Orienta
       fonts:
         - asset: assets/fonts/Orienta-Regular.ttf
