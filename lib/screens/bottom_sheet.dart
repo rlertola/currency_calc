@@ -42,20 +42,15 @@ class BaseMenuScreen extends StatelessWidget {
                       Provider.of<CurrencyData>(context).quotes[i].imageUrl,
                       scale: 2.5,
                     ),
-                    // CircleAvatar(
-                    //   backgroundColor: Theme.of(context).primaryColor,
-                    //   child: Text(
-                    //     menuItem.currencySymbol,
-                    //     style: TextStyle(
-                    //       color: Colors.white,
-                    //     ),
-                    //   ),
-                    // ),
                     title: Text(
                       menuItem.countryName,
-                      style: TextStyle(fontSize: 20),
+                      style:
+                          TextStyle(fontSize: 20, color: Colors.grey.shade700),
                     ),
-                    trailing: Text(menuItem.currencySymbol),
+                    trailing: Text(
+                      menuItem.currencySymbol,
+                      style: TextStyle(color: Colors.grey.shade700),
+                    ),
                     onTap: () {
                       Provider.of<CurrencyData>(context).getCurrencyData(
                         baseSymbol: menuItem.currencySymbol,

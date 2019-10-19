@@ -26,8 +26,29 @@ class CurrencyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> result = [
+      Text(
+        '$baseAmount $baseSymbol = ',
+        style: TextStyle(
+          fontFamily: 'Questrial',
+          color: Colors.white,
+          fontSize: 16,
+        ),
+      ),
+      SizedBox(
+        height: 10,
+      ),
+      Text(
+        '$value $countryCode',
+        style: TextStyle(
+          fontFamily: 'Questrial',
+          color: Colors.white,
+          fontSize: 30,
+        ),
+      ),
+    ];
     return Container(
-      height: 200,
+      // height: 200,
       margin: const EdgeInsets.only(bottom: 2),
       child: GestureDetector(
         onLongPress: () {
@@ -44,7 +65,6 @@ class CurrencyCard extends StatelessWidget {
           );
         },
         child: Card(
-          // color: Colors.lightBlue,
           color: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
@@ -58,64 +78,55 @@ class CurrencyCard extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              const SizedBox(
+                height: 14,
+              ),
               Text(
                 countryName,
                 style: const TextStyle(
-                  // fontFamily: 'Raleway',
                   color: Colors.white,
-                  fontSize: 40,
+                  fontSize: 38,
                 ),
               ),
               Text(
                 currencyName,
-                style: const TextStyle(
-                  // fontFamily: 'Raleway',
-                  color: Colors.white,
+                style: TextStyle(
+                  color: Colors.grey.shade300,
                   fontSize: 15,
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Image.asset(
                 image,
                 scale: 2.5,
               ),
-              // Image.network(
-              //   image,
-              //   scale: 12,
-              // ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    '$baseAmount $baseSymbol',
-                    style: const TextStyle(
-                      fontFamily: 'Comfortaa',
-                      color: Colors.white,
-                      fontSize: 16,
+              (baseAmount.length > 5)
+                  ? Column(
+                      children: result,
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: result,
                     ),
-                  ),
-                  const Text(
-                    ' = ',
-                    style: TextStyle(
-                      fontFamily: 'Comfortaa',
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
-                    '$value $countryCode',
-                    style: const TextStyle(
-                      fontFamily: 'Comfortaa',
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
-                  ),
-                ],
+
+              // Text(
+              //     '$baseAmount $baseSymbol = $value $countryCode',
+              //     style: const TextStyle(
+              //       fontFamily: 'Questrial',
+              //       color: Colors.white,
+              //       fontSize: 28,
+              //     ),
+              //     textAlign: TextAlign.center,
+              //   ),
+
+              //
+              const SizedBox(
+                height: 14,
               ),
             ],
           ),
