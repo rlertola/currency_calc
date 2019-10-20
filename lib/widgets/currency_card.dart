@@ -26,7 +26,7 @@ class CurrencyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> result = [
+    List<Widget> quoteResult = [
       Text(
         '$baseAmount $baseSymbol = ',
         style: TextStyle(
@@ -96,7 +96,7 @@ class CurrencyCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 5,
+                height: 10,
               ),
               Image.asset(
                 image,
@@ -107,11 +107,11 @@ class CurrencyCard extends StatelessWidget {
               ),
               (baseAmount.length > 5)
                   ? Column(
-                      children: result,
+                      children: quoteResult,
                     )
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: result,
+                      children: quoteResult,
                     ),
 
               // Text(
