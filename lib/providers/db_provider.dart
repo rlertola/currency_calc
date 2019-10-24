@@ -1,11 +1,13 @@
-import 'package:bread_currency/models/quote.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path_provider/path_provider.dart';
 import 'dart:io';
+
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
+
+import '../models/quote.dart';
 
 class DbProvider {
-  Database db;
+  Database _db;
 
   DbProvider() {
     init();
@@ -14,7 +16,7 @@ class DbProvider {
   init() async {
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, "favorites.db");
-    db = await openDatabase(path, version: 1,
+    _db = await openDatabase(path, version: 1,
         onCreate: (Database newDb, int version) {
       newDb.execute("""
         CREATE TABLE Favorites
@@ -32,7 +34,7 @@ class DbProvider {
   }
 
   Future<List<Quote>> fetchItems() async {
-    final List<Map<String, dynamic>> maps = await db.query('Favorites');
+    final List<Map<String, dynamic>> maps = await _db.query('Favorites');
 
     List<Quote> quotes = List.generate(maps.length, (i) {
       return Quote(
@@ -43,18 +45,17 @@ class DbProvider {
         countryName: maps[i]['countryName'],
         currencyName: maps[i]['currencyName'],
         imageUrl: maps[i]['imageUrl'],
-        // quotePrice: maps[i]['quotePrice'],
       );
     });
     return quotes;
   }
 
   Future<void> insertItem(Quote quote) async {
-    await db.insert('Favorites', quote.toMap());
+    await _db.insert('Favorites', quote.toMap());
   }
 
   Future<void> deleteItem(int id) async {
-    await db.delete(
+    await _db.delete(
       'Favorites',
       where: "id = ?",
       whereArgs: [id],

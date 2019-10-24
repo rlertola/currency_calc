@@ -1,6 +1,6 @@
 class MenuItem {
-  final currencySymbol;
-  final countryName;
+  final String currencySymbol;
+  final String countryName;
 
   MenuItem({
     this.currencySymbol,

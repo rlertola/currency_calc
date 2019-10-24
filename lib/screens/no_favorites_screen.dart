@@ -1,5 +1,6 @@
-import 'package:bread_currency/constants.dart';
 import 'package:flutter/material.dart';
+
+import '../constants.dart';
 
 class NoFavoritesScreen extends StatelessWidget {
   @override
@@ -16,7 +17,7 @@ class NoFavoritesScreen extends StatelessWidget {
           child: Text(
             kNoFavoritesMessage,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
           ),
         ),
       ],

@@ -1,8 +1,9 @@
-import 'package:bread_currency/models/currency_data.dart';
-import 'package:bread_currency/screens/favorites_screen.dart';
-import 'package:bread_currency/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/currency_data.dart';
+import 'favorites_screen.dart';
+import 'home_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
     _pages = [
       {
         'page': HomeScreen(),
-        'title': 'Currency Converter',
+        'title': 'Home',
       },
       {
         'page': FavoritesScreen(),
@@ -28,7 +29,7 @@ class _TabsScreenState extends State<TabsScreen> {
     ];
   }
 
-  _selectPage(int index) {
+  void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;
     });
@@ -46,8 +47,8 @@ class _TabsScreenState extends State<TabsScreen> {
         selectedItemColor: Theme.of(context).primaryColor,
         items: [
           BottomNavigationBarItem(
-            icon: const Icon(Icons.all_inclusive),
-            title: const Text('All'),
+            icon: const Icon(Icons.home),
+            title: const Text('Home'),
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.star),

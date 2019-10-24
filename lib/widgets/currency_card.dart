@@ -1,17 +1,18 @@
-import 'package:bread_currency/constants.dart';
-import 'package:bread_currency/models/currency_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../constants.dart';
+import '../providers/currency_data.dart';
+
 class CurrencyCard extends StatelessWidget {
-  final countryCode;
-  final baseSymbol;
-  final baseAmount;
-  final countryName;
-  final currencyName;
-  final image;
-  final value;
-  final index;
+  final String countryCode;
+  final String baseSymbol;
+  final String baseAmount;
+  final String countryName;
+  final String currencyName;
+  final String image;
+  final String value;
+  final int index;
 
   CurrencyCard({
     this.countryCode,
@@ -30,25 +31,22 @@ class CurrencyCard extends StatelessWidget {
       Text(
         '$baseAmount $baseSymbol = ',
         style: TextStyle(
-          fontFamily: 'Questrial',
-          color: Colors.white,
+          color: Theme.of(context).accentColor,
           fontSize: 16,
         ),
       ),
-      SizedBox(
+      const SizedBox(
         height: 10,
       ),
       Text(
         '$value $countryCode',
         style: TextStyle(
-          fontFamily: 'Questrial',
-          color: Colors.white,
+          color: Theme.of(context).accentColor,
           fontSize: 30,
         ),
       ),
     ];
     return Container(
-      // height: 200,
       margin: const EdgeInsets.only(bottom: 2),
       child: GestureDetector(
         onLongPress: () {
@@ -68,8 +66,7 @@ class CurrencyCard extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              // color: Colors.grey.shade400,
-              color: Colors.white,
+              color: Theme.of(context).accentColor,
               width: 1,
             ),
             borderRadius: BorderRadius.circular(20),
@@ -83,15 +80,15 @@ class CurrencyCard extends StatelessWidget {
               ),
               Text(
                 countryName,
-                style: const TextStyle(
-                  color: Colors.white,
+                style: TextStyle(
+                  color: Theme.of(context).accentColor,
                   fontSize: 38,
                 ),
               ),
               Text(
                 currencyName,
                 style: TextStyle(
-                  color: Colors.grey.shade300,
+                  color: Theme.of(context).bottomAppBarColor,
                   fontSize: 15,
                 ),
               ),
@@ -113,18 +110,6 @@ class CurrencyCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: quoteResult,
                     ),
-
-              // Text(
-              //     '$baseAmount $baseSymbol = $value $countryCode',
-              //     style: const TextStyle(
-              //       fontFamily: 'Questrial',
-              //       color: Colors.white,
-              //       fontSize: 28,
-              //     ),
-              //     textAlign: TextAlign.center,
-              //   ),
-
-              //
               const SizedBox(
                 height: 14,
               ),

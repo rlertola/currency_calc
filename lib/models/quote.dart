@@ -1,12 +1,12 @@
 class Quote {
-  final id;
-  final countrySymbol;
-  final baseSymbol;
-  var baseAmount;
-  final countryName;
-  final currencyName;
-  final imageUrl;
-  var quotePrice;
+  final int id;
+  final String countrySymbol;
+  final String baseSymbol;
+  String baseAmount;
+  final String countryName;
+  final String currencyName;
+  final String imageUrl;
+  String quotePrice;
 
   Quote({
     this.id,

@@ -1,9 +1,10 @@
-import 'package:bread_currency/constants.dart';
-import 'package:bread_currency/models/currency_data.dart';
-import 'package:bread_currency/screens/no_favorites_screen.dart';
-import 'package:bread_currency/widgets/currency_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../constants.dart';
+import '../providers/currency_data.dart';
+import '../widgets/currency_card.dart';
+import 'no_favorites_screen.dart';
 
 class FavoritesScreen extends StatelessWidget {
   Future<void> _refreshFavorites(BuildContext context) async {
@@ -46,9 +47,7 @@ class FavoritesScreen extends StatelessWidget {
               );
             } else {
               if (snapshot.error != null) {
-                return Center(
-                  child: Text(kErrorMessage),
-                );
+                return kErrorScreen;
               } else {
                 return RefreshIndicator(
                   onRefresh: () => _refreshFavorites(context),

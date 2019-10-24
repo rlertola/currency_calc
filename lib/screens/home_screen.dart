@@ -1,10 +1,10 @@
-import 'package:bread_currency/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'package:bread_currency/widgets/currency_card.dart';
-import 'package:bread_currency/widgets/header_container.dart';
-import 'package:bread_currency/models/currency_data.dart';
 import 'package:provider/provider.dart';
+
+import '../constants.dart';
+import '../providers/currency_data.dart';
+import '../widgets/currency_card.dart';
+import '../widgets/header_container.dart';
 
 class HomeScreen extends StatelessWidget {
   Future<void> _refreshCurrency(BuildContext context) async {
@@ -47,16 +47,14 @@ class HomeScreen extends StatelessWidget {
                           );
                         } else {
                           if (snapshot.error != null) {
-                            return Center(
-                              child: Text(kErrorMessage),
-                            );
+                            return kErrorScreen;
                           } else {
                             return RefreshIndicator(
                               onRefresh: () => _refreshCurrency(context),
                               child: Consumer<CurrencyData>(
                                   builder: (context, currencyData, child) {
                                 return ListView.builder(
-                                  padding: EdgeInsets.only(top: 10),
+                                  padding: const EdgeInsets.only(top: 10),
                                   itemCount: currencyData.quoteCount,
                                   itemBuilder: ((context, i) {
                                     final quote = currencyData.quotes[i];

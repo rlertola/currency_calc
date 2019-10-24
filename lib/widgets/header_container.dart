@@ -1,18 +1,18 @@
-import 'package:bread_currency/screens/bottom_sheet.dart';
 import 'package:flutter/material.dart';
-import 'package:bread_currency/models/currency_data.dart';
 import 'package:provider/provider.dart';
 
-const double inputAndButtonHeight = 74;
+import '../providers/currency_data.dart';
+import '../screens/bottom_sheet.dart';
+
+const double _inputAndButtonHeight = 74;
 
 class HeaderContainer extends StatelessWidget {
-  final String hintText = 1.toStringAsFixed(2);
   @override
   Widget build(BuildContext context) {
     return Consumer<CurrencyData>(
       builder: (context, currencyData, child) {
         return Container(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: Theme.of(context).primaryColor,
           ),
@@ -22,33 +22,33 @@ class HeaderContainer extends StatelessWidget {
               Text(
                 'Currency Calculator',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).accentColor,
                   fontSize: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 6,
               ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 14,
                       ),
-                      height: inputAndButtonHeight,
+                      height: _inputAndButtonHeight,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
                           bottomLeft: Radius.circular(10),
                         ),
-                        color: Colors.white,
+                        color: Theme.of(context).accentColor,
                       ),
                       child: Center(
                         child: TextField(
                           cursorColor: Theme.of(context).primaryColor,
                           cursorWidth: 2,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 36,
                             color: Colors.black54,
                           ),
@@ -56,7 +56,7 @@ class HeaderContainer extends StatelessWidget {
                           textAlign: TextAlign.right,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.chevron_right),
-                            contentPadding: EdgeInsets.all(2),
+                            contentPadding: const EdgeInsets.all(2),
                             hintText:
                                 currencyData.baseAmount.toStringAsFixed(2),
                             hintStyle: TextStyle(
@@ -79,10 +79,7 @@ class HeaderContainer extends StatelessWidget {
                   ),
                   Container(
                     width: 130,
-                    height: inputAndButtonHeight,
-                    decoration: BoxDecoration(
-                        // border: Border.all(color: Colors.black87),
-                        ),
+                    height: _inputAndButtonHeight,
                     child: RaisedButton(
                       elevation: 2,
                       shape: RoundedRectangleBorder(
@@ -100,7 +97,7 @@ class HeaderContainer extends StatelessWidget {
                       child: Text(
                         currencyData.base,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Theme.of(context).accentColor,
                           fontSize: 30,
                         ),
                       ),

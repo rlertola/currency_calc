@@ -1,14 +1,15 @@
 import 'dart:collection';
 import 'dart:convert';
 
-import 'package:bread_currency/models/db_provider.dart';
-import 'package:bread_currency/models/menu_item.dart';
-import 'package:bread_currency/models/quote.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/number_symbols_data.dart';
+
+import '../models/menu_item.dart';
+import '../models/quote.dart';
+import 'db_provider.dart';
 
 const String currencyDataUrl = 'https://api.exchangeratesapi.io/latest?base=';
+const String defaultBaseSymbol = 'USD';
 
 class CurrencyData extends ChangeNotifier {
   List<Quote> _quotes = [];
@@ -20,20 +21,14 @@ class CurrencyData extends ChangeNotifier {
   String base = 'USD';
   double baseAmount = 1;
   int pageIndex = 0;
-  DbProvider db = DbProvider();
 
-  // List get symbols {
-  //   return numberFormatSymbols.keys
-  //       // .where((key) => key.toString().contains('_'))
-  //       // .map((key) => key.toString().split('_'))
-  //       // .map((split) => Locale(split[0], split[1]))
-  //       .toList();
-  // }
+  DbProvider _db = DbProvider();
 
   UnmodifiableListView<Quote> get quotes {
     _quotes.sort((a, b) {
       return a.countryName.compareTo(b.countryName);
     });
+
     return UnmodifiableListView(_quotes);
   }
 
@@ -59,7 +54,7 @@ class CurrencyData extends ChangeNotifier {
     return _favorites.length;
   }
 
-  Future<void> getCurrencyData({baseSymbol = 'USD'}) async {
+  Future<void> getCurrencyData({baseSymbol = defaultBaseSymbol}) async {
     base = baseSymbol;
     _quotes = [];
     _menuItems = [];
@@ -97,12 +92,12 @@ class CurrencyData extends ChangeNotifier {
   }
 
   Future<void> updateFavorites() async {
-    _favorites = await db.fetchItems();
+    _favorites = await _db.fetchItems();
     if (favCount == 0) {
       return;
     }
 
-    // Either one of these will work. Not exactly sure why regular forEach doesn't and if one is better than the other.
+    // Refreshes the quotePrice for each favorite. Either this or await Future.forEach(...) will work. Regular forEach will not.
     for (Quote fav in _favorites) {
       double baseAmtToRound = double.parse(fav.baseAmount);
       String singleQuoteUrl =
@@ -114,17 +109,6 @@ class CurrencyData extends ChangeNotifier {
       fav.baseAmount = baseAmtToRound.toStringAsFixed(2);
       fav.quotePrice = valueToRound.toStringAsFixed(2);
     }
-
-    // await Future.forEach(_favorites, (fav) async {
-    //   String singleQuoteUrl =
-    //       '$currencyDataUrl${fav.baseSymbol}&symbols=${fav.countrySymbol}';
-    //   http.Response response = await http.get(singleQuoteUrl);
-    //   var decoded = jsonDecode(response.body);
-    //   double valueToRound = decoded['rates'][fav.countrySymbol];
-    //   valueToRound = valueToRound * fav.baseAmount;
-    //   fav.quotePrice = valueToRound.toStringAsFixed(2);
-    // });
-
     notifyListeners();
   }
 
@@ -135,15 +119,15 @@ class CurrencyData extends ChangeNotifier {
 
   void toggleFavorite(int quoteIndex) {
     if (pageIndex == 0) {
-      // _favorites.add(_quotes[quoteIndex]);
-      db.insertItem(_quotes[quoteIndex]);
+      _db.insertItem(_quotes[quoteIndex]);
     } else {
-      db.deleteItem(_favorites[quoteIndex].id);
+      _db.deleteItem(_favorites[quoteIndex].id);
       _favorites.removeAt(quoteIndex);
     }
     notifyListeners();
   }
 
+  // BottomNavigation
   void setPageIndex(int index) {
     pageIndex = index;
   }
