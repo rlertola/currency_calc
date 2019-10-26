@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:animated_splash/animated_splash.dart';
 
 import 'providers/currency_data.dart';
 import 'screens/tabs_screen.dart';
@@ -12,6 +13,12 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider<CurrencyData>(
       builder: (context) => CurrencyData(),
       child: MaterialApp(
+        home: AnimatedSplash(
+          imagePath: 'assets/splashImage3.png',
+          home: TabsScreen(),
+          duration: 2500,
+          type: AnimatedSplashType.StaticDuration,
+        ),
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
@@ -24,7 +31,7 @@ class MyApp extends StatelessWidget {
           dividerColor: Theme.of(context).primaryColor,
           fontFamily: 'Questrial',
         ),
-        home: TabsScreen(),
+        // home: TabsScreen(),
       ),
     );
   }
