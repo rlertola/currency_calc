@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/currency_data.dart';
 import '../screens/bottom_sheet.dart';
+import 'package:bread_currency/constants.dart';
 
 const double _inputAndButtonHeight = 74;
 
@@ -20,7 +21,7 @@ class HeaderContainer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Currency Calculator',
+                kAppLabel,
                 style: TextStyle(
                   color: Theme.of(context).accentColor,
                   fontSize: 20,

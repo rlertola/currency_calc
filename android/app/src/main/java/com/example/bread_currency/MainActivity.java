@@ -1,4 +1,4 @@
-package com.example.bread_currency;
+package com.rldev.everyday_currency;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

@@ -189,7 +189,7 @@ class CurrencyData extends ChangeNotifier {
         break;
       case 'RUB':
         country = 'Russia';
-        currency = 'Russian ruble';
+        currency = 'Russian rouble';
         break;
       case 'HRK':
         country = 'Croatia';

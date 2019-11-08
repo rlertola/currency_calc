@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const String kAppLabel = 'Everyday Currency ';
+
 // NoFavoritesScreen
 const String kNoFavoritesMessage =
     'You currently have no favorites.\n\nLong-press on a card in the Home screen with any base amount to add it to your favorites.\n\n Long-press again here to remove it.';
