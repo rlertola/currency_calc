@@ -5,7 +5,8 @@ class Quote {
   String baseAmount;
   final String countryName;
   final String currencyName;
-  final String imageUrl;
+  final String quoteFlag;
+  final String baseFlag;
   String quotePrice;
 
   Quote({
@@ -15,7 +16,8 @@ class Quote {
     this.baseAmount,
     this.countryName,
     this.currencyName,
-    this.imageUrl,
+    this.quoteFlag,
+    this.baseFlag,
     this.quotePrice,
   });
 
@@ -27,7 +29,7 @@ class Quote {
       "baseSymbol": baseSymbol,
       "baseAmount": baseAmount,
       "countrySymbol": countrySymbol,
-      "imageUrl": imageUrl,
+      "imageUrl": quoteFlag
     };
   }
 }

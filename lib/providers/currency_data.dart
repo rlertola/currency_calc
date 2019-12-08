@@ -18,6 +18,7 @@ class CurrencyData extends ChangeNotifier {
   String country;
   String currency;
   String flag;
+  String baseFlag;
   String base = 'USD';
   double baseAmount = 1;
   int pageIndex = 0;
@@ -56,6 +57,7 @@ class CurrencyData extends ChangeNotifier {
 
   Future<void> getCurrencyData({baseSymbol = defaultBaseSymbol}) async {
     base = baseSymbol;
+    baseFlag = './assets/flags/$baseSymbol.png';
     _quotes = [];
     _menuItems = [];
 
@@ -77,7 +79,8 @@ class CurrencyData extends ChangeNotifier {
           countryName: country,
           currencyName: currency,
           quotePrice: valueToRound.toStringAsFixed(2),
-          imageUrl: flag,
+          quoteFlag: flag,
+          baseFlag: baseFlag,
         ),
       );
 
@@ -137,75 +140,75 @@ class CurrencyData extends ChangeNotifier {
     switch (symbol) {
       case 'CAD':
         country = 'Canada';
-        currency = 'Canadian dollar';
+        currency = 'dollar';
         break;
       case 'HKD':
         country = 'Hong Kong';
-        currency = 'Hong Kong dollar';
+        currency = 'dollar';
         break;
       case 'ISK':
         country = 'Iceland';
-        currency = 'Icelandic krona';
+        currency = 'krona';
         break;
       case 'PHP':
         country = 'Philippines';
-        currency = 'Philippine peso';
+        currency = 'peso';
         break;
       case 'DKK':
         country = 'Denmark';
-        currency = 'Danish krone';
+        currency = 'krone';
         break;
       case 'HUF':
         country = 'Hungary';
-        currency = 'Hungarian forint';
+        currency = 'forint';
         break;
       case 'CZK':
         country = 'Czechia';
-        currency = 'Czech koruna';
+        currency = 'koruna';
         break;
       case 'GBP':
         country = 'United Kingdom';
-        currency = 'British pound';
+        currency = 'pound';
         break;
       case 'RON':
         country = 'Romania';
-        currency = 'Romanian leu';
+        currency = 'leu';
         break;
       case 'SEK':
         country = 'Sweden';
-        currency = 'Swedish krona';
+        currency = 'krona';
         break;
       case 'IDR':
         country = 'Indonesia';
-        currency = 'Indonesian rupiah';
+        currency = 'rupiah';
         break;
       case 'INR':
         country = 'India';
-        currency = 'Indian rupee';
+        currency = 'rupee';
         break;
       case 'BRL':
         country = 'Brazil';
-        currency = 'Brazilian real';
+        currency = 'real';
         break;
       case 'RUB':
         country = 'Russia';
-        currency = 'Russian rouble';
+        currency = 'rouble';
         break;
       case 'HRK':
         country = 'Croatia';
-        currency = 'Croatian kuna';
+        currency = 'kuna';
         break;
       case 'JPY':
         country = 'Japan';
-        currency = 'Japanese yen';
+        currency = 'yen';
         break;
       case 'THB':
         country = 'Thailand';
-        currency = 'Thai baht';
+        currency = 'baht';
         break;
       case 'CHF':
         country = 'Switzerland';
-        currency = 'Swiss franc';
+        currency = 'franc';
         break;
       case 'EUR':
         country = 'European Union';
@@ -213,59 +216,59 @@ class CurrencyData extends ChangeNotifier {
         break;
       case 'MYR':
         country = 'Malaysia';
-        currency = 'Malaysian ringgit';
+        currency = 'ringgit';
         break;
       case 'BGN':
         country = 'Bulgaria';
-        currency = 'Bulgarian lev';
+        currency = 'lev';
         break;
       case 'TRY':
         country = 'Turkey';
-        currency = 'Turkish lira';
+        currency = 'lira';
         break;
       case 'CNY':
         country = 'China';
-        currency = 'Chinese yuan';
+        currency = 'yuan';
         break;
       case 'NOK':
         country = 'Norway';
-        currency = 'Norwegian krone';
+        currency = 'krone';
         break;
       case 'NZD':
         country = 'New Zealand';
-        currency = 'New Zealand dollar';
+        currency = 'dollar';
         break;
       case 'ZAR':
         country = 'South Africa';
-        currency = 'South African rand';
+        currency = 'rand';
         break;
       case 'USD':
         country = 'United States';
-        currency = 'US dollar';
+        currency = 'dollar';
         break;
       case 'MXN':
         country = 'Mexico';
-        currency = 'Mexican peso';
+        currency = 'peso';
         break;
       case 'SGD':
         country = 'Singapore';
-        currency = 'Singapore dollar';
+        currency = 'dollar';
         break;
       case 'AUD':
         country = 'Australia';
-        currency = 'Australian dollar';
+        currency = 'dollar';
         break;
       case 'ILS':
         country = 'Israel';
-        currency = 'Israeli shekel';
+        currency = 'shekel';
         break;
       case 'KRW':
         country = 'South Korea';
-        currency = 'South Korean won';
+        currency = 'won';
         break;
       case 'PLN':
         country = 'Poland';
-        currency = 'Polish zloty';
+        currency = 'zloty';
         break;
     }
   }

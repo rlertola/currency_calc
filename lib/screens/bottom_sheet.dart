@@ -40,7 +40,7 @@ class BaseMenuScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(vertical: 6),
                   child: ListTile(
                     leading: Image.asset(
-                      Provider.of<CurrencyData>(context).quotes[i].imageUrl,
+                      Provider.of<CurrencyData>(context).quotes[i].quoteFlag,
                       scale: 2.5,
                     ),
                     title: Text(

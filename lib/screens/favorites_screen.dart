@@ -67,7 +67,8 @@ class FavoritesScreen extends StatelessWidget {
                                   baseAmount: fav.baseAmount,
                                   countryName: fav.countryName,
                                   currencyName: fav.currencyName,
-                                  image: fav.imageUrl,
+                                  quoteFlag: fav.quoteFlag,
+                                  baseFlag: fav.baseFlag,
                                   value: fav.quotePrice,
                                   index: i,
                                 );

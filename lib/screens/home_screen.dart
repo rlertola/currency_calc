@@ -64,7 +64,8 @@ class HomeScreen extends StatelessWidget {
                                       baseAmount: quote.baseAmount,
                                       countryName: quote.countryName,
                                       currencyName: quote.currencyName,
-                                      image: quote.imageUrl,
+                                      quoteFlag: quote.quoteFlag,
+                                      baseFlag: quote.baseFlag,
                                       value: quote.quotePrice,
                                       index: i,
                                     );

@@ -37,14 +37,18 @@ class DbProvider {
     final List<Map<String, dynamic>> maps = await _db.query('Favorites');
 
     List<Quote> quotes = List.generate(maps.length, (i) {
+      final map = maps[i];
+      final baseSymbol = map['baseSymbol'];
+      final baseFlag = './assets/flags/$baseSymbol.png';
       return Quote(
-        id: maps[i]['id'],
-        countrySymbol: maps[i]['countrySymbol'],
-        baseSymbol: maps[i]['baseSymbol'],
-        baseAmount: maps[i]['baseAmount'].toString(),
-        countryName: maps[i]['countryName'],
-        currencyName: maps[i]['currencyName'],
-        imageUrl: maps[i]['imageUrl'],
+        id: map['id'],
+        countrySymbol: map['countrySymbol'],
+        baseSymbol: map['baseSymbol'],
+        baseAmount: map['baseAmount'].toString(),
+        countryName: map['countryName'],
+        currencyName: map['currencyName'],
+        quoteFlag: map['imageUrl'],
+        baseFlag: baseFlag,
       );
     });
     return quotes;

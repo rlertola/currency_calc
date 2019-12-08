@@ -10,7 +10,8 @@ class CurrencyCard extends StatelessWidget {
   final String baseAmount;
   final String countryName;
   final String currencyName;
-  final String image;
+  final String quoteFlag;
+  final String baseFlag;
   final String value;
   final int index;
 
@@ -20,7 +21,8 @@ class CurrencyCard extends StatelessWidget {
     this.baseAmount,
     this.countryName,
     this.currencyName,
-    this.image,
+    this.quoteFlag,
+    this.baseFlag,
     this.value,
     this.index,
   });
@@ -32,7 +34,7 @@ class CurrencyCard extends StatelessWidget {
         '$baseAmount $baseSymbol = ',
         style: TextStyle(
           color: Theme.of(context).accentColor,
-          fontSize: 16,
+          fontSize: 18,
         ),
       ),
       const SizedBox(
@@ -93,11 +95,33 @@ class CurrencyCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 6,
               ),
-              Image.asset(
-                image,
-                scale: 2.5,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Image.asset(
+                    baseFlag,
+                    scale: 2.5,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Image.asset(
+                    'assets/right_arrow3.png',
+                    scale: 30,
+                    // width: 30,
+                    // height: 18,
+                    color: Theme.of(context).bottomAppBarColor,
+                  ),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  Image.asset(
+                    quoteFlag,
+                    scale: 2.5,
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
