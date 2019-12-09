@@ -68,12 +68,12 @@ class CurrencyCard extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: Theme.of(context).accentColor,
-              width: 1,
+              color: Theme.of(context).bottomAppBarColor,
+              width: 0.3,
             ),
             borderRadius: BorderRadius.circular(20),
           ),
-          elevation: 4,
+          elevation: 1,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
