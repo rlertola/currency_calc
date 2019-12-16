@@ -17,9 +17,12 @@ class FavoritesScreen extends StatelessWidget {
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         elevation: 0,
-        title: const Text(
+        centerTitle: false,
+        title: Text(
           'Favorites',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: Theme.of(context).primaryColorLight,
+          ),
         ),
       ),
       body: Container(
@@ -42,7 +45,7 @@ class FavoritesScreen extends StatelessWidget {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(
-                  backgroundColor: Theme.of(context).primaryColor,
+                  backgroundColor: Theme.of(context).buttonColor,
                 ),
               );
             } else {

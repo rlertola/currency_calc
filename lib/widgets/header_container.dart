@@ -23,7 +23,7 @@ class HeaderContainer extends StatelessWidget {
               Text(
                 kAppLabel,
                 style: TextStyle(
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColorLight,
                   fontSize: 20,
                 ),
               ),
@@ -47,11 +47,10 @@ class HeaderContainer extends StatelessWidget {
                       ),
                       child: Center(
                         child: TextField(
-                          cursorColor: Theme.of(context).primaryColor,
+                          cursorColor: Theme.of(context).primaryColorLight,
                           cursorWidth: 2,
                           style: const TextStyle(
                             fontSize: 36,
-                            color: Colors.black54,
                           ),
                           keyboardType: TextInputType.number,
                           textAlign: TextAlign.right,
@@ -63,6 +62,10 @@ class HeaderContainer extends StatelessWidget {
                             hintStyle: TextStyle(
                               fontSize: 30,
                               color: Theme.of(context).hintColor,
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).buttonColor),
                             ),
                           ),
                           onSubmitted: (newAmount) {
@@ -98,7 +101,7 @@ class HeaderContainer extends StatelessWidget {
                       child: Text(
                         currencyData.base,
                         style: TextStyle(
-                          color: Theme.of(context).accentColor,
+                          color: Theme.of(context).primaryColor,
                           fontSize: 30,
                         ),
                       ),

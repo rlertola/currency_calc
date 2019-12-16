@@ -33,7 +33,7 @@ class CurrencyCard extends StatelessWidget {
       Text(
         '$baseAmount $baseSymbol = ',
         style: TextStyle(
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).primaryColorLight,
           fontSize: 18,
         ),
       ),
@@ -43,11 +43,12 @@ class CurrencyCard extends StatelessWidget {
       Text(
         '$value $countryCode',
         style: TextStyle(
-          color: Theme.of(context).accentColor,
+          color: Theme.of(context).primaryColorLight,
           fontSize: 30,
         ),
       ),
     ];
+
     return Container(
       margin: const EdgeInsets.only(bottom: 2),
       child: GestureDetector(
@@ -68,7 +69,7 @@ class CurrencyCard extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           shape: RoundedRectangleBorder(
             side: BorderSide(
-              color: Theme.of(context).bottomAppBarColor,
+              color: Theme.of(context).primaryColor,
               width: 0.3,
             ),
             borderRadius: BorderRadius.circular(20),
@@ -83,14 +84,15 @@ class CurrencyCard extends StatelessWidget {
               Text(
                 countryName,
                 style: TextStyle(
-                  color: Theme.of(context).accentColor,
+                  color: Theme.of(context).primaryColorLight,
+                  // color: Theme.of(context).accentColor,
                   fontSize: 38,
                 ),
               ),
               Text(
                 currencyName,
                 style: TextStyle(
-                  color: Theme.of(context).bottomAppBarColor,
+                  color: Theme.of(context).primaryColorLight,
                   fontSize: 15,
                 ),
               ),
@@ -112,7 +114,8 @@ class CurrencyCard extends StatelessWidget {
                     scale: 30,
                     // width: 30,
                     // height: 18,
-                    color: Theme.of(context).bottomAppBarColor,
+                    color: Theme.of(context).hintColor,
+                    // color: Theme.of(context).primaryColorLight,
                   ),
                   SizedBox(
                     width: 8,

@@ -15,6 +15,7 @@ dependencies:
   provider: ^3.1.0
   intl: ^0.16.0
   animated_splash: ^1.0.0
+  sphere_bottom_navigation_bar: ^1.0.0
 
   # flutter_sparkline: ^0.1.0
   # flutter_charts: ^0.1.10

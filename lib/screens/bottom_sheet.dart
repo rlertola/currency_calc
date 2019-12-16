@@ -27,7 +27,10 @@ class BaseMenuScreen extends StatelessWidget {
           ),
           Text(
             'Choose Base Currency',
-            style: TextStyle(fontSize: 16, color: Colors.grey.shade700),
+            style: TextStyle(
+              fontSize: 16,
+              color: Theme.of(context).primaryColorLight,
+            ),
           ),
           const Divider(),
           Expanded(
@@ -50,7 +53,10 @@ class BaseMenuScreen extends StatelessWidget {
                     ),
                     trailing: Text(
                       menuItem.currencySymbol,
-                      style: TextStyle(color: Colors.grey.shade700),
+                      style: TextStyle(
+                        color: Color(0xFF7B849B),
+                      ),
+                      // style: TextStyle(color: Colors.grey.shade700),
                     ),
                     onTap: () {
                       Provider.of<CurrencyData>(context).getCurrencyData(

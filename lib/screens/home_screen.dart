@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).accentColor,
       body: Container(
         color: Theme.of(context).primaryColor,
         child: SafeArea(
@@ -24,10 +25,10 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: Color(0xFF616174),
+                    color: Theme.of(context).accentColor,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
                     ),
                   ),
                   child: Container(
@@ -42,7 +43,7 @@ class HomeScreen extends StatelessWidget {
                             ConnectionState.waiting) {
                           return Center(
                             child: CircularProgressIndicator(
-                              backgroundColor: Theme.of(context).primaryColor,
+                              backgroundColor: Theme.of(context).buttonColor,
                             ),
                           );
                         } else {
