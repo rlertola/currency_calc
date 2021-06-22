@@ -48,11 +48,11 @@ class _TabsScreenState extends State<TabsScreen> {
         items: [
           BottomNavigationBarItem(
             icon: const Icon(Icons.home),
-            title: const Text('Home'),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.star),
-            title: const Text('Favorites'),
+            label: 'Favorites',
           ),
         ],
       ),

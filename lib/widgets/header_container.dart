@@ -81,20 +81,20 @@ class HeaderContainer extends StatelessWidget {
                   Container(
                     width: 130,
                     height: _inputAndButtonHeight,
-                    child: RaisedButton(
-                      elevation: 2,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(10),
-                          bottomRight: Radius.circular(10),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(10),
+                            bottomRight: Radius.circular(10),
+                          ),
                         ),
                       ),
-                      onPressed: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) => BaseMenuScreen(),
-                        );
-                      },
+                      onPressed: () => showModalBottomSheet(
+                        context: context,
+                        builder: (context) => BaseMenuScreen(),
+                      ),
                       child: Text(
                         currencyData.base,
                         style: TextStyle(

@@ -54,8 +54,8 @@ class CurrencyCard extends StatelessWidget {
         onLongPress: () {
           CurrencyData currencyData = Provider.of<CurrencyData>(context);
           currencyData.toggleFavorite(index);
-          Scaffold.of(context).hideCurrentSnackBar();
-          Scaffold.of(context).showSnackBar(
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+          ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: currencyData.pageIndex == 0
                   ? const Text(kItemAddedToFavorites)
